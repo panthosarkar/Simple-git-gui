@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Simple Git GUI
+Comment=Simple Git GUI with spinner
+Exec= python3 ~/Pantho/Projects/Simple_Git_gui/src/git_gui.py
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=Development;
