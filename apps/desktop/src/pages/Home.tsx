@@ -12,6 +12,7 @@ import CommitPanel from "@/features/changes/CommitPanel";
 import SyncControls from "@/features/sync/SyncControls";
 
 import GitHubLogin from "@/features/auth/GitHubLogin";
+import RepositorySelector from "@/features/repositories/RepositorySelector";
 
 import { api, type ChangedFile, type GitStatus } from "@/lib/api";
 
@@ -161,15 +162,19 @@ export default function Home() {
 
         <div className="mx-5 h-7 w-px bg-white/[0.07]" />
 
-        <div className="min-w-0 rounded-xl border border-white/[0.08] bg-white/[0.03] px-3 py-2">
-          <div className="truncate text-xs font-medium text-slate-300">
-            {repositoryPath.split("/").pop()}
-          </div>
-
-          <div className="truncate text-[10px] text-slate-600">
-            {repositoryPath}
-          </div>
-        </div>
+        <RepositorySelector
+          repositories={[]}
+          currentRepo={repositoryPath.split("/").pop()}
+          onSelect={(repo) => {
+            console.log("Selected repo:", repo);
+          }}
+          onOpenLocal={() => {
+            console.log("Open local");
+          }}
+          onClone={() => {
+            console.log("Clone");
+          }}
+        />
 
         <div className="ml-3 flex items-center gap-2 rounded-xl border border-indigo-500/20 bg-indigo-500/10 px-3 py-2 text-xs text-indigo-300">
           <GitBranch size={15} />
