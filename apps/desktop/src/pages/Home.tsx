@@ -11,7 +11,15 @@ import DiffViewer from "@/features/changes/DiffViewer";
 import CommitPanel from "@/features/changes/CommitPanel";
 import SyncControls from "@/features/sync/SyncControls";
 
+import GitHubLogin from "@/features/auth/GitHubLogin";
+
 import { api, type ChangedFile, type GitStatus } from "@/lib/api";
+
+type User = {
+  login: string;
+  name?: string | null;
+  avatar_url?: string;
+};
 
 export default function Home() {
   const [status, setStatus] = useState<GitStatus | null>(null);
@@ -23,6 +31,8 @@ export default function Home() {
 
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+
+  const [user, setUser] = useState<User | null>(null);
 
   const repositoryPath = "/mnt/DISK_P/Pantho/Simple-git-gui";
 
@@ -114,6 +124,21 @@ export default function Home() {
 
   const iconButton =
     "flex h-9 w-9 items-center justify-center rounded-xl border border-white/[0.07] bg-white/[0.025] text-slate-400 transition hover:border-white/[0.12] hover:bg-white/[0.065] hover:text-white disabled:opacity-40";
+
+  if (!user) {
+    return (
+      <main className="relative flex h-screen flex-col overflow-hidden bg-[#070a11] text-slate-100">
+        <ResizeHandles />
+        <TitleBar />
+
+        <GitHubLogin
+          onLogin={(githubUser) => {
+            setUser(githubUser);
+          }}
+        />
+      </main>
+    );
+  }
 
   return (
     <main className="relative flex h-screen flex-col overflow-hidden bg-[#070a11] text-slate-100">
