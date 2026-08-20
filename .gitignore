@@ -13,8 +13,6 @@ venv/
 env/
 
 # Environment secrets
-.env
-.env.*
 !.env.example
 
 # Next.js / Node
@@ -47,3 +45,4 @@ Thumbs.db
 .cache/
 tmp/
 temp/
+config.bat
