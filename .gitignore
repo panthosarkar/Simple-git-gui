@@ -13,8 +13,6 @@ venv/
 env/
 
 # Environment secrets
-.env
-.env.*
 !.env.example
 
 # Next.js / Node
@@ -31,7 +29,6 @@ pnpm-debug.log*
 frontend/src-tauri/target/
 
 # IDE
-.vscode/
 .idea/
 *.swp
 *.swo
@@ -47,3 +44,4 @@ Thumbs.db
 .cache/
 tmp/
 temp/
+config.bat
