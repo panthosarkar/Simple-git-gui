@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from backend.app.api.repositories import router as repositories_router
 from backend.app.api.git import router as git_router
 from backend.app.api.auth import router as auth_router
+from backend.app.api.github import router as github_router
 
 app = FastAPI(
     title="Simple Git GUI API",
@@ -31,6 +32,7 @@ app.add_middleware(
 app.include_router(repositories_router)
 app.include_router(git_router)
 app.include_router(auth_router)
+app.include_router(github_router)
 
 
 @app.get("/api/health")
